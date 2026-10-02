@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Ali M Jaderi {% endblock %}
+
+{% block header %}
+    <h1>Ali Moala Jaderi</h1>
+    <h2> Backend Devloper | Python & Django & Django REST Framework</h2>
+    <p></p>
+{% endblock %}
+
+{% block skills %}
+        <div class="skills-list">
+
+            {% for skill in skills %}
+
+                <div class="skill">
+
+                    <h3>{{ skill.title }}</h3>
+
+                    <ul>
+
+                        {% for value in skill.skills.all %}
+                            <li>{{ value }}</li>
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+{% endblock %}
+
