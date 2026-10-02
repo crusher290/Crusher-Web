@@ -1,0 +1,25 @@
+<h1>Article categories</h1>
+
+<ul>
+  {% for category in categories %}
+
+    <li>
+
+      <a href="{% url 'article:category_detail' slug=category.slug %}">
+
+        {{ category.title }}
+
+      </a>
+      
+      {% if category.description %}
+
+        <p>{{ category.description }}</p>
+
+      {% endif %}
+
+    </li>
+  {% empty %}
+    <li>هنوز دسته‌بندی‌ای ثبت نشده.</li>
+
+  {% endfor %}
+</ul>
