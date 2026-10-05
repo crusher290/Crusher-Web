@@ -1,7 +1,7 @@
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 
-class ArticleCategorie(models.Model):
+class ArticleCategory(models.Model):
     title = models.CharField(max_length=50, unique=True)
     description = models.TextField(null=True, blank=True)
     slug = models.SlugField(unique=True)
@@ -10,7 +10,7 @@ class ArticleCategorie(models.Model):
         return self.title
 
 class Article(models.Model):
-    category = models.ForeignKey(ArticleCategorie, on_delete=models.PROTECT, related_name="articles")
+    category = models.ForeignKey(ArticleCategory, on_delete=models.PROTECT, related_name="articles")
     name = models.CharField(max_length=100)
     content = CKEditor5Field("Content", config_name="default")
     description = models.TextField()
