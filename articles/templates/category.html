@@ -4,9 +4,12 @@
   
     {% for category in categories %}
 
-      <a href=" {% url "article:category_detail" %} ">
+        <a href="{% url 'home' %}">
             {{ category.title }}
         </a>
+
+        <br>
+        {{ category.description }}
 
     {% endfor %}
 

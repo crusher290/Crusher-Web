@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{% block title %}{% endblock %}</title>
 
     {% block extra_css %}{% endblock %}
 </head>
 
-<body>
+<body class="back-ground">
 
     <!-- Headline -->
     <header>
@@ -34,7 +34,7 @@
             </div>
         </a>
 
-        <a href="{% url "article:category_list" %}">
+        <a href="{% url "article:category-list" %}">
             <div class="portfolio-card">
                 <h2>Articles</h2>
             </div>
