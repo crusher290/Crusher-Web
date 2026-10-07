@@ -1,8 +1,10 @@
 <ul>
 
-    {% for article in articles%}
+    {% for article in articles %}
 
-        {{ article.name }}
+       <a href={% url "article:article-content" slug=article.slug %}>
+            <h2>{{ article.name }}</h2>
+       </a>
 
     {% endfor %}
 

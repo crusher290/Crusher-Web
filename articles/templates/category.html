@@ -4,13 +4,13 @@
   
     {% for category in categories %}
 
-        <a href="{% url 'home' %}">
+        <a href="{% url 'article:category-detail' slug=category.slug %}">
             {{ category.title }}
         </a>
 
         <br>
         {{ category.description }}
-
+        <br>
     {% endfor %}
 
 </ul>
