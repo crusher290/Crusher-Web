@@ -12,6 +12,16 @@
 
 <body class="back-ground">
 
+    <div class="bubbles">
+    <span class="bubble" style="--x:8%;  --s:60px;  --d:18s; --delay:0s"></span>
+    <span class="bubble" style="--x:22%; --s:30px;  --d:14s; --delay:-5s"></span>
+    <span class="bubble" style="--x:35%; --s:90px;  --d:24s; --delay:-9s"></span>
+    <span class="bubble" style="--x:50%; --s:45px;  --d:16s; --delay:-2s"></span>
+    <span class="bubble" style="--x:63%; --s:70px;  --d:22s; --delay:-12s"></span>
+    <span class="bubble" style="--x:75%; --s:25px;  --d:12s; --delay:-7s"></span>
+    <span class="bubble" style="--x:85%; --s:55px;  --d:20s; --delay:-15s"></span>
+    <span class="bubble" style="--x:93%; --s:35px;  --d:15s; --delay:-3s"></span>
+  </div>
     <!-- Headline -->
     <header>
         {% block header %}{% endblock %}
@@ -28,7 +38,7 @@
     <!-- Projects & Articles -->
     <section id="portfolio">
 
-        <a href="#">
+        <a href="{% url "project:project-list" %}">
             <div class="portfolio-card">
                 <h2>Projects</h2>
             </div>
@@ -48,9 +58,7 @@
         <h2>Get In Touch</h2>
 
         <div class="contact-info">
-            <p></p>
-            <p></p>
-            <p></p>
+            {% block contact %}{% endblock  %}
         </div>
     </section>
 
