@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     #third party apps
     'django_ckeditor_5',
 
+    # app's
     'home',
     'articles',
+    'project'
 
 ]
 
