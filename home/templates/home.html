@@ -5,7 +5,10 @@
 {% block header %}
     <h1>Ali Moala Jaderi</h1>
     <h2> Backend Devloper | Python & Django & Django REST Framework</h2>
-    <p></p>
+    <p>I am Ali, a back-end developer with a strong passion for building APIs and server-side logic.</p>
+    {% if resume %}
+        <a href="{{ resume.file.url }}" download>download resume</a>
+    {% endif %}
 {% endblock %}
 
 {% block skills %}
@@ -31,4 +34,24 @@
 
         </div>
 {% endblock %}
+
+{% block contact %}
+
+        {% for contact in contacts %}
+
+            {% if contact.kind == "email" %}
+                <a href="mailto:{{ contact.value }}">{{ contact.title }}</a>
+
+            {% elif contact.kind == "phone" %}
+                <a href="tel:{{ contact.value }}">{{ contact.title }}</a>
+
+            {% elif contact.kind == "link" %}
+                <a href="{{ contact.value }}" target="_blank" rel="noopener noreferrer">
+                    {{ contact.title }}
+                </a>
+            {% endif %}
+
+        {% endfor %}
+
+{% endblock  %}
 
