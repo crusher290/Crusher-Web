@@ -1,0 +1,69 @@
+:root {
+    --blue: 0, 91, 255;
+    --purple: 168, 44, 255;
+}
+html, body { height: 100%; margin: 0; }
+
+body {
+    background:
+      radial-gradient(circle at 100% 100%, rgba(var(--blue), .95) 0%, rgba(var(--blue), 0) 55%),
+      linear-gradient(135deg, rgb(2, 0, 36) 9%, rgb(9, 9, 121) 68%);
+    background-attachment: fixed;
+    color: #fff;
+    font-family: system-ui, sans-serif;
+    background:
+        radial-gradient(circle at 100% 100%, rgba(var(--blue), .6) 0%, rgba(var(--blue), 0) 50%),
+        radial-gradient(circle at 0% 0%,     rgba(var(--blue), .6) 0%, rgba(var(--blue), 0) 50%),
+        linear-gradient(135deg, rgb(2, 0, 36) 9%, rgb(9, 9, 121) 68%);
+}
+
+  
+
+.bubbles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -150px;
+    left: var(--x);
+    width: var(--s);
+    height: var(--s);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .25);
+    background-color: rgba(var(--blue), .35);
+    box-shadow: 0 0 25px rgba(var(--blue), .6);
+    animation:
+      rise var(--d) linear var(--delay) infinite,
+      sway 6s ease-in-out var(--delay) infinite alternate,
+      recolor 60s ease-in-out infinite;
+}
+
+@keyframes rise {
+    to { transform: translateY(-120vh); }
+}
+@keyframes sway {
+    from { margin-left: -30px; }
+    to   { margin-left: 30px; }
+}
+  /* 0-30s blue, 30-60s purple */
+@keyframes recolor {
+    0%, 45% {
+      background-color: rgba(var(--blue), .35);
+      box-shadow: 0 0 25px rgba(var(--blue), .6);
+}
+    50%, 95% {
+      background-color: rgba(var(--purple), .35);
+      box-shadow: 0 0 25px rgba(var(--purple), .6);
+}
+100% {
+      background-color: rgba(var(--blue), .35);
+      box-shadow: 0 0 25px rgba(var(--blue), .6);
+}
+}
+
+  main { padding: 2rem; text-align: center; }
