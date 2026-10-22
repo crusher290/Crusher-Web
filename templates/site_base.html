@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="back-ground">
+    <div class="bubbles" aria-hidden="true">
+        <span class="bubble" style="--x:8%;  --s:60px; --d:18s; --delay:0s"></span>
+        <span class="bubble" style="--x:22%; --s:30px; --d:14s; --delay:-5s"></span>
+        <span class="bubble" style="--x:35%; --s:90px; --d:24s; --delay:-9s"></span>
+        <span class="bubble" style="--x:50%; --s:45px; --d:16s; --delay:-2s"></span>
+        <span class="bubble" style="--x:63%; --s:70px; --d:22s; --delay:-12s"></span>
+        <span class="bubble" style="--x:75%; --s:25px; --d:12s; --delay:-7s"></span>
+        <span class="bubble" style="--x:85%; --s:55px; --d:20s; --delay:-15s"></span>
+        <span class="bubble" style="--x:93%; --s:35px; --d:15s; --delay:-3s"></span>
+    </div>
+
+    {% block page %}
+    {% endblock %}
+</body>
+</html>

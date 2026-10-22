@@ -1,16 +1,26 @@
-<h1>Article categories</h1>
+{% extends "site_base.html" %}
 
-<ul>
-  
-    {% for category in categories %}
+{% block title %}Articles | Ali M Jaderi{% endblock %}
 
-        <a href="{% url 'article:category-detail' slug=category.slug %}">
-            {{ category.title }}
-        </a>
+{% block page %}
+<main class="page-shell">
+    <h1 class="page-title">Articles</h1>
+    <p class="section-intro">Browse the topics I write about and explore my articles.</p>
 
-        <br>
-        {{ category.description }}
-        <br>
-    {% endfor %}
+    <div class="page-cards">
+        {% for category in categories %}
+            <a class="content-card-link" href="{% url 'article:category-detail' slug=category.slug %}">
+                <article class="content-card">
+                    <h2>{{ category.title }}</h2>
+                    {% if category.description %}<p>{{ category.description }}</p>{% endif %}
+                    <span class="card-action">Explore articles</span>
+                </article>
+            </a>
+        {% empty %}
+            <p class="section-intro">Articles will be available here soon.</p>
+        {% endfor %}
+    </div>
 
-</ul>
+    <a class="page-home-link" href="{% url 'core:home' %}">Back to home</a>
+</main>
+{% endblock %}

@@ -1,4 +1,19 @@
 
 
 
-    <h2> {{ articles.content|safe }} </h2>
+{% extends "site_base.html" %}
+
+{% block title %}{{ articles.name }} | Articles{% endblock %}
+
+{% block page %}
+<main class="page-shell article-detail">
+    <h1 class="page-title">{{ articles.name }}</h1>
+    <p class="section-intro">{{ articles.description }}</p>
+
+    <article class="content-card detail-card">
+        {{ articles.content|safe }}
+    </article>
+
+    <a class="page-home-link" href="{% url 'article:category-detail' slug=articles.category.slug %}">Back to {{ articles.category.title }}</a>
+</main>
+{% endblock %}

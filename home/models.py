@@ -25,7 +25,7 @@ class Resume(models.Model):
 
 class SocialLink(models.Model):
     title = models.CharField(max_length=100)
-    vleu = models.CharField(max_length=100)
+    value = models.CharField(max_length=100)
     kind = models.CharField(choices=SocialType.choices)
     order = models.PositiveIntegerField(default=1)
     is_active = models.BooleanField(default=True)

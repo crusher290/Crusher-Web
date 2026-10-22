@@ -1,75 +1,42 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>{% block title %}{% endblock %}</title>
+{% extends "site_base.html" %}
 
-    {% block extra_css %}{% endblock %}
-</head>
-
-<body class="back-ground">
-
-    <div class="bubbles">
-    <span class="bubble" style="--x:8%;  --s:60px;  --d:18s; --delay:0s"></span>
-    <span class="bubble" style="--x:22%; --s:30px;  --d:14s; --delay:-5s"></span>
-    <span class="bubble" style="--x:35%; --s:90px;  --d:24s; --delay:-9s"></span>
-    <span class="bubble" style="--x:50%; --s:45px;  --d:16s; --delay:-2s"></span>
-    <span class="bubble" style="--x:63%; --s:70px;  --d:22s; --delay:-12s"></span>
-    <span class="bubble" style="--x:75%; --s:25px;  --d:12s; --delay:-7s"></span>
-    <span class="bubble" style="--x:85%; --s:55px;  --d:20s; --delay:-15s"></span>
-    <span class="bubble" style="--x:93%; --s:35px;  --d:15s; --delay:-3s"></span>
-  </div>
-    <!-- Headline -->
+{% block page %}
     <header>
         {% block header %}{% endblock %}
     </header>
 
+    <main>
+        <section id="skills" class="home-section">
+            <h2>Skills</h2>
+            <p class="section-intro">The technologies and tools I use to bring ideas to life.</p>
+            {% block skills %}{% endblock %}
+        </section>
 
-    <!-- Skills -->
-    <section id="skills">
-        <h2>Skills</h2>
-        {% block skills %}{% endblock %}
-    </section>
-
-
-    <!-- Projects & Articles -->
-    <section id="portfolio">
-
-        <a href="{% url "project:project-list" %}">
-            <div class="portfolio-card">
-                <h2>Projects</h2>
+        <section id="portfolio" class="home-section">
+            <h2>Portfolios</h2>
+            <p class="portfolio-intro">Take a look at the projects I have built and the articles I have written.</p>
+            <div class="portfolio-cards">
+                <a href="{% url 'project:project-list' %}">
+                    <div class="portfolio-card">
+                        <h3>Projects</h3>
+                        <p>Here you can see the projects I've built so far.</p>
+                    </div>
+                </a>
+                <a href="{% url 'article:category-list' %}">
+                    <div class="portfolio-card">
+                        <h3>Articles</h3>
+                        <p>Here you can read the articles I've written.</p>
+                    </div>
+                </a>
             </div>
-        </a>
+        </section>
 
-        <a href="{% url "article:category-list" %}">
-            <div class="portfolio-card">
-                <h2>Articles</h2>
+        <section id="contact" class="home-section">
+            <h2>Get In Touch</h2>
+            <p class="section-intro">Have a question or want to work together? Feel free to reach out.</p>
+            <div class="contact-info">
+                {% block contact %}{% endblock %}
             </div>
-        </a>
-
-    </section>
-
-
-    <!-- Get In Touch -->
-    <section id="contact">
-        <h2>Get In Touch</h2>
-
-        <div class="contact-info">
-            {% block contact %}{% endblock  %}
-        </div>
-    </section>
-
-
-    <!-- Copy Writing -->
-    <footer>
-        <p></p>
-    </footer>
-
-
-    {% block extra_js %}{% endblock %}
-
-</body>
-</html>
+        </section>
+    </main>
+{% endblock %}

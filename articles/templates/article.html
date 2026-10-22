@@ -1,11 +1,26 @@
-<ul>
+{% extends "site_base.html" %}
 
-    {% for article in articles %}
+{% block title %}{{ category.title }} | Articles{% endblock %}
 
-       <a href={% url "article:article-content" slug=article.slug %}>
-            <h2>{{ article.name }}</h2>
-       </a>
+{% block page %}
+<main class="page-shell">
+    <h1 class="page-title">{{ category.title }}</h1>
+    <p class="section-intro">{% if category.description %}{{ category.description }}{% else %}Articles in this topic.{% endif %}</p>
 
-    {% endfor %}
+    <div class="page-cards">
+        {% for article in articles %}
+            <a class="content-card-link" href="{% url 'article:article-content' slug=article.slug %}">
+                <article class="content-card">
+                    <h2>{{ article.name }}</h2>
+                    <p>{{ article.description }}</p>
+                    <span class="card-action">Read article</span>
+                </article>
+            </a>
+        {% empty %}
+            <p class="section-intro">There are no articles in this category yet.</p>
+        {% endfor %}
+    </div>
 
-</ul>
+    <a class="page-home-link" href="{% url 'article:category-list' %}">All article categories</a>
+</main>
+{% endblock %}
